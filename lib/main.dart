@@ -5,8 +5,7 @@ import 'package:widgets_app/config/theme.dart';
 import 'package:widgets_app/presentation/providers/theme_provider.dart';
 
 void main() {
-  
-  runApp( const ProviderScope(child: MainApp()));
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends ConsumerWidget {
@@ -14,19 +13,19 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-    final int selectedColor = ref.watch(selectedColorProvider);
-    final bool isDarkmode = ref.watch(isDarkmodeProvider);
+    // final int selectedColor = ref.watch(selectedColorProvider);
+    // final bool isDarkmode = ref.watch(isDarkmodeProvider);
+    final AppTheme appTheme = ref.watch(themeNitifierProvider);
 
     return MaterialApp.router(
       routerConfig: appRouter,
-      debugShowCheckedModeBanner:false,
-      theme: AppTheme(selectedColor: selectedColor, isDarkmode: isDarkmode).getTheme(),
-    //   home: const HomeScreen(),
-    //   routes: {
-    //   '/buttons': (context) => const ButtonsScreen(),
-    //   '/cards': (context) => const CardsScreen(),
-    // },
+      debugShowCheckedModeBanner: false,
+      theme: appTheme.getTheme(),
+      //   home: const HomeScreen(),
+      //   routes: {
+      //   '/buttons': (context) => const ButtonsScreen(),
+      //   '/cards': (context) => const CardsScreen(),
+      // },
     );
   }
 }
