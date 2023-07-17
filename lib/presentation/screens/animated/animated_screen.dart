@@ -50,7 +50,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed:changeShape,
-        child: Icon(Icons.play_arrow_rounded),
+        child: const Icon(Icons.play_arrow_rounded),
       ),
     );
   }

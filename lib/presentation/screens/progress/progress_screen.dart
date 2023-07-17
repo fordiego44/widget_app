@@ -62,7 +62,7 @@ class _ControlledProgressIndicator extends StatelessWidget {
                   strokeWidth: 2,
                   backgroundColor: Colors.black12,
                 ),
-                SizedBox(width: 20.0),
+                const SizedBox(width: 20.0),
                 Expanded(
                   child: LinearProgressIndicator(
                     value: progressValue.toDouble(),

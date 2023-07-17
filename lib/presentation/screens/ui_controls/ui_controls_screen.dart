@@ -17,9 +17,7 @@ class UiControlsScreen extends StatelessWidget {
 }
 
 class _UiControlsView extends StatefulWidget {
-  const _UiControlsView({
-    super.key,
-  });
+  const _UiControlsView();
 
   @override
   State<_UiControlsView> createState() => _UiControlsViewState();
@@ -53,7 +51,7 @@ class _UiControlsViewState extends State<_UiControlsView> {
                 })),
         ExpansionTile(
           title: const Text("Vehículo de transporte"),
-          subtitle: Text("${selectedTransportation}"),
+          subtitle: Text("$selectedTransportation"),
           children: [
             RadioListTile(
                 title: const Text("By Car"),

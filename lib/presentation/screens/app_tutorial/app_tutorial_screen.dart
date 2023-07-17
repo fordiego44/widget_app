@@ -33,6 +33,7 @@ class AppTutorialScreen extends StatefulWidget {
 class _AppTutorialScreenState extends State<AppTutorialScreen> {
   final PageController pageviewControler = PageController();
   bool endReached = false;
+  double pagina = 0;
 
   @override
   void initState() {
@@ -40,18 +41,26 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
 
     pageviewControler.addListener(() {
       final page = pageviewControler.page ?? 0;
-      if (!endReached && page >= slides.length - 1.5) {
+      if (!endReached && page >= slides.length - 1.5) { 
         setState(() {
+          pagina = 2;
           endReached = true;
         });
+      } else {
+        if (endReached == true && page < slides.length - 1.5) { 
+          setState(() {
+          pagina = 1;
+          endReached = false;
+        });
+        }
       }
     });
   }
 
   @override
-  void dispose() { 
+  void dispose() {
     pageviewControler.dispose();
-    
+
     super.dispose();
   }
 
@@ -84,12 +93,21 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
                     bottom: 30.0,
                     child: FadeInRight(
                       from: 15.0,
-                      delay: const Duration( seconds: 1 ),
+                      delay: const Duration(microseconds: 300),
                       child: FilledButton(
                           onPressed: () => context.pop(),
                           child: const Text("Comenzar")),
                     ))
-                : const SizedBox()
+                :   pagina != 0 ? Positioned(
+                    right: 30.0,
+                    bottom: 30.0,
+                    child: FadeOutRight(
+                      from: 15.0,
+                      delay: const Duration(microseconds: 300),
+                      child: FilledButton(
+                          onPressed: () => context.pop(),
+                          child: const Text("Comenzar")),
+                    )) : const SizedBox()
           ],
         ));
   }
